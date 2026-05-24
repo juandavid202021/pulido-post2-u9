@@ -1,6 +1,7 @@
 package com.universidad.seguridad.controller;
 
 import com.universidad.seguridad.model.Usuario;
+import com.universidad.seguridad.repository.UsuarioRepository;
 import com.universidad.seguridad.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final UsuarioService service;
+    private final UsuarioRepository repo;
 
-    public AuthController(UsuarioService service) {
+    public AuthController(UsuarioService service, UsuarioRepository repo) {
         this.service = service;
+        this.repo = repo;
     }
 
     @GetMapping("/login")
@@ -46,6 +49,8 @@ public class AuthController {
     public String dashboard(Model model, Authentication auth) {
         model.addAttribute("usuario", auth.getName());
         model.addAttribute("roles", auth.getAuthorities());
+        repo.findByEmail(auth.getName()).ifPresent(u ->
+                model.addAttribute("nombreUsuario", u.getNombre()));
         return "dashboard";
     }
 

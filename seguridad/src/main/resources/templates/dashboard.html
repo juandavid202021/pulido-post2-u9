@@ -8,6 +8,7 @@
 <body>
 <h1>Dashboard</h1>
 <p>Bienvenido, <span sec:authentication="name"></span></p>
+<p>Nombre: <span th:text="${nombreUsuario}"></span></p>
 
 <!-- Solo visible para ADMIN -->
 <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin}">
@@ -23,4 +24,4 @@
     <button type="submit">Cerrar Sesión</button>
 </form>
 </body>
-</html>
+</html>l>
