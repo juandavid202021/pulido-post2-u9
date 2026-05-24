@@ -76,25 +76,25 @@ Se agregaron 4 métodos con @PreAuthorize en UsuarioService...
 
 **Prueba:** Al intentar acceder a /admin con usuario USER...
 
-![Error 403 personalizado](capturas/error403.png)
+![Error 403 personalizado](Capturas/error403.png)
 
 ---
 
 ### 2. Mitigación XSS con Thymeleaf
 Se registró un usuario con nombre: `<script>alert("XSS")</script>`
 
-![XSS escapado en dashboard](capturas/xss-escapado.png)
+![XSS escapado en dashboard](Capturas/xss-escapado.png)
 
 ---
 
 ### 3. Content-Security-Policy
 Se configuró el CSP header en SecurityConfig...
 
-![CSP header en DevTools](capturas/csp-header.png)
+![CSP header en DevTools](Capturas/csp-header.png)
 
 ---
 
 ### 4. Protección CSRF
 Se intentó enviar POST sin token CSRF...
 
-![CSRF rechazado](capturas/csrf-405.png)
+![CSRF rechazado](Capturas/csrf-405.png)
